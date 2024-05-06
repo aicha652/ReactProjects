@@ -1,0 +1,6 @@
+ul li p {
+  margin-left: 80px;
+  margin-top: 10px;
+  color: red;
+  cursor: pointer;
+}
