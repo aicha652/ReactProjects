@@ -19,7 +19,9 @@ function App() {
           Learn React
         </a>
         <Article name="Ahmed" email="ahmed@gmail.com" age="40" />
-        <Article name="Ali" email="ali@gmail.com" age="12" />
+        <Article name="Ali" email="ali@gmail.com" age="12">
+          <p style={{backgroundColor: "teal", color: "white"}}>hello world</p>
+        </Article>
       </header>
     </div>
   );
