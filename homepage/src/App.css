@@ -1,0 +1,15 @@
+div div.App {
+  display: flex;
+}
+div .divButtonClass {
+  display: flex;
+  border: 5px solid rgb(25, 172, 147);
+  max-width: 80%;
+  height: 300px;
+  padding: 5px;
+  margin-left: 350px;
+  justify-content: center;
+  margin-top: 5px;
+  flex-wrap: wrap;
+  width: 300px;
+}
