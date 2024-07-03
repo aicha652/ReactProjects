@@ -1,7 +1,16 @@
 import { useState } from "react"
 
 export default function MyForm() {
-    const [formInputs, setFormInput] = useState({name: "", email: "", age: ""})
+    const [formInputs, setFormInput] = useState({
+        name: "",
+        email: "",
+        age: "",
+        generalInfo: "",
+        isStudent: false})
+
+    function handleCheckBox(event) {
+        setFormInput({...formInputs, isStudent: event.target.checked})
+    }
     return (
         <form 
         onSubmit={(event) => {
@@ -39,7 +48,26 @@ export default function MyForm() {
             <hr>
             </hr>
 
-            <button>Submit</button>
+            <label>General Info: </label>
+            <textarea 
+            value = {formInputs.generalInfo}
+            onChange={(event) => {
+                setFormInput({...formInputs, generalInfo: event.target.value})
+            }}/>
+
+           <hr>
+           </hr>
+
+           <lable>Are you student</lable>
+           <input
+           checked={formInputs.isStudent}
+           onChange={handleCheckBox} 
+           type="checkbox"/>
+
+           <hr>
+           </hr>
+
+          <button>Submit</button>
         </form>
     )
 }
