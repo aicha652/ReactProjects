@@ -6,7 +6,10 @@ export default function MyForm() {
         email: "",
         age: "",
         generalInfo: "",
-        isStudent: false})
+        isStudent: false,
+        country: "",
+        status: ""
+    })
 
     function handleCheckBox(event) {
         setFormInput({...formInputs, isStudent: event.target.checked})
@@ -45,6 +48,43 @@ export default function MyForm() {
                 setFormInput({...formInputs, age: event.target.value})
             }}/>
  
+            <hr>
+            </hr>
+
+            <label>Country</label>
+            <select 
+            value={formInputs.country}
+            onChange={(event) => {
+                setFormInput({...formInputs, country: event.target.value})
+            }}>
+                <option>MAR</option>
+                <option>ALG</option>
+                <option>TUN</option>
+            </select>
+
+            <hr>
+            </hr>
+
+            <input
+            value="student" 
+            type="radio"
+            name="status"
+            checked={formInputs.status === "student"}
+            onChange={(event) => {
+                setFormInput({...formInputs, status: event.target.value})
+            }}
+            />Student
+
+            <input
+            value="teacher" 
+            type="radio"
+            name="status"
+            checked={formInputs.status === "teacher"}
+            onChange={(event) => {
+                setFormInput({...formInputs, status: event.target.value})
+            }}
+            />Teacher
+
             <hr>
             </hr>
 
