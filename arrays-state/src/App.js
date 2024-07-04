@@ -2,14 +2,21 @@
 import './App.css';
 import { useState } from "react"
 
-function App() {
+let nextId = 5
 
-  const [devices, setDevices] = useState(["iphone", "samsung", "readme", "nokia"])
+function App() {
+  const [devices, setDevices] = useState(
+    [
+      {id: 1, name: "iphone"},
+      {id: 2, name: "samsung"},
+      {id: 3, name: "readme"},
+      {id: 4, name: "nokia"}
+    ])
 
   const devicesList = devices.map((device) => {
     return(
       <div>
-        <li>{device}</li>
+        <li key={device.id}>{device.name}<button onClick={() => {handleDeleteClick(device.id)}}>Delete</button></li>
       </div>
     )
   })
@@ -17,9 +24,19 @@ function App() {
   const [deviceInput, setDeviceInput] = useState("")
 
   function addDevice() {
-    setDevices([...devices, deviceInput])
+    setDevices([...devices, {id: nextId, name: deviceInput}])
+    nextId = nextId + 1
   }
   
+
+  function handleDeleteClick(id) {
+    console.log(id)
+    const newDevices = devices.filter((device) => {
+      return(device.id !== id)
+    })
+
+    setDevices(newDevices)
+  }
   return (
     <div className="App">
       {devicesList}
