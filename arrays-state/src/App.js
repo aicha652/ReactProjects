@@ -16,7 +16,10 @@ function App() {
   const devicesList = devices.map((device) => {
     return(
       <div>
-        <li key={device.id}>{device.name}<button onClick={() => {handleDeleteClick(device.id)}}>Delete</button></li>
+        <li key={device.id}>{device.name}
+          <button onClick={() => {handleDeleteClick(device.id)}}>Delete</button>
+          <button onClick={() => {handleEditClick(device.id)}}>Edit</button>
+        </li>
       </div>
     )
   })
@@ -37,6 +40,20 @@ function App() {
 
     setDevices(newDevices)
   }
+
+  function handleEditClick(id) {
+    const newDevices = devices.map((device) => {
+      if (device.id === id) {
+        let newDevice = {...device, name: device.name + "a"}
+        return newDevice
+      }
+      else{
+        return device
+      }
+    })
+    setDevices(newDevices)
+  }
+
   return (
     <div className="App">
       {devicesList}
