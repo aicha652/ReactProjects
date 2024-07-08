@@ -21,12 +21,27 @@ export default function ShoppingCart() {
   ] = useState(initialProducts)
 
   function handleIncreaseClick(productId) {
-    const newProducts = products.map((product) => {
+    setProducts(products.map(product => {
       if (product.id === productId) {
-        let newProduct = {...product, count: product.count + 1}
-        return newProduct
+        return {
+          ...product,
+          count: product.count + 1
+        };
+      } else {
+        return product;
       }
-      else{
+    }))
+  }
+
+  function handleDeleteClick(productId) {
+    const newProducts = products.map((product) => {
+      if(product.id === productId) {
+        if (product.count > 1)
+          return {...product, count: product.count - 1}
+        else
+          return product
+      }
+      else {
         return product
       }
     })
@@ -44,6 +59,11 @@ export default function ShoppingCart() {
             handleIncreaseClick(product.id);
           }}>
             +
+          </button>
+          <button onClick={() => {
+             handleDeleteClick(product.id)
+          }}>
+            –
           </button>
         </li>
       ))}
