@@ -6,7 +6,13 @@ function App() {
   console.log(t)
   return (
     <div className="App">
-
+      {
+        t.map((e) => {
+          return(
+          <h1 key={e.id}>{e.title}</h1>
+        ) 
+        })
+      }
     </div>
   );
 }
