@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+import { useDispatch, useSelector } from "react-redux"
 import './App.css';
+import { pluss } from './types/Plus';
+import { minsee } from './types/Minse';
 
 function App() {
+  const m = useSelector(state => state.x)
+  const n = useDispatch()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => n(pluss)}>+</button>
+      <button onClick={() => n(minsee)}>-</button>
+      {m}
     </div>
   );
 }
